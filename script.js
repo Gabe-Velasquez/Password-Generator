@@ -11,6 +11,65 @@ var generateBtn = document.querySelector("#generate");
 let eraseBTN = document.querySelector('#erase');
 let copyBTN = document.querySelector('#copy');
 
+function optionPassword() {
+  //prompt asking how many characters the user would like to use
+  let passLength = parseInt(prompt('How many characters use? We can only use between 8 and 128 characters.'));
+
+  //gives a series of confirms to user for conditionals
+  if (passLength>7 && passLength<129){
+    let uppercase = confirm("Are we using uppercase letters?");
+    let lowercase = confirm("Are we using lower letters?");
+    let numbers = confirm("Are we using numbers?");
+    let special = confirm("Are we using special characters?");
+  
+
+  //stores users inputs
+  let options ={
+    passLength: passLength,
+    numbers: numbers,
+    lowercase: letterSet.toLowerCase(),
+    uppercase: letterSet.ToUpperCase(),
+    special: special
+  };
+  //completes information gather and sends out
+  return options;
+  } else{
+  alert('That is not a number between 8 and 128. Please enter a valid number.');
+  }
+}
+
+
+// function that generates password that is requested in writePassword
+function generatePassword(){
+  let passwordUserChoice = optionPassword();
+  let userChoice = '';
+  let password = '';
+
+  // if statement that evaluates choices and will implement based on input
+  if (passwordUserChoice.uppercase){
+    userChoice += letterSet;
+  }
+  if (passwordUserChoice.lowercase){
+    userChoice += letterSet;
+  }
+  if (passwordUserChoice.numbers){
+    userChoice += numberSet;
+  }
+  if (passwordUserChoice.special){
+    userChoice += specialCharacters;
+  }
+  // for to generate random number
+  for (let i=0; i<passwordUserChoice.passLength; i++){
+    let random = Math.floor(Math.random() * userChoice.length);
+    password += userChoice.charAt(random);
+  }
+
+  //returns password out of function
+  return password;
+}
+
+
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -22,7 +81,7 @@ function writePassword() {
 
 // Erases password that was generated 
 function erasePassword(){
-  document.getElementById('password').innerHTML='';
+  document.getElementById('password').innerHTML= "";
 }
 
 // Copies password onto clipboard
