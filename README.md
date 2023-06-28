@@ -5,7 +5,7 @@ This is the 3rd module for our coding bootcamp. This week we learned about JavaS
 ## Installation
 
 No installation needed. HTML is linked to script file within repo. 
-Live located at 
+Live located at https://gabe-velasquez.github.io/Password-Generator/
 
 ## Usage
 
