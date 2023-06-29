@@ -12,6 +12,7 @@ var generateBtn = document.querySelector("#generate");
 // Adding more references for generated elements
 var eraseBTN = document.querySelector('#erase');
 var copyBTN = document.querySelector('#copy');
+var passwordCopy = document.querySelector('#password');
 
 function optionPassword() {
   //prompt asking how many characters the user would like to use
@@ -98,7 +99,7 @@ eraseBTN.addEventListener('click', erasePassword);
 // Event added to copy generated password
 copyBTN.addEventListener('click', () => {
   navigator.clipboard
-    .writeText(password.textContent)
+    .writeText(passwordCopy.value)
     .then(() => {
       console.log('Your password is copied');
     }) .catch((err) => {
