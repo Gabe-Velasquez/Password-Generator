@@ -1,16 +1,17 @@
 // Assignment code here
 // Variables available in global scope
 const numberSet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-const letterSetUpper = ["a", "b", 'c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-const letterSetLower = ['A', 'B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+const letterSetLower = ["a", "b", 'c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+const letterSetUpper = ['A', 'B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 const specialCharacters = [',', '.', '/', ';', "'", '=', '-', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '`', '~', "'", '{', '}'];
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Adding more references for generated elements
-let eraseBTN = document.querySelector('#erase');
-let copyBTN = document.querySelector('#copy');
+var eraseBTN = document.querySelector('#erase');
+var copyBTN = document.querySelector('#copy');
 
 function optionPassword() {
   //prompt asking how many characters the user would like to use
@@ -30,7 +31,7 @@ function optionPassword() {
     numbers: numbers,
     lowercase: lowercase,
     uppercase: uppercase,
-    special: special
+    special: special,
   };
   //completes information gather and sends out
   return options;
@@ -48,23 +49,21 @@ function generatePassword(){
 
   // if statement that evaluates choices and will implement based on input
   if (passwordUserChoice.uppercase){
-    userChoice += letterSetUpper;
+    userChoice += letterSetUpper.join('');
   }
   if (passwordUserChoice.lowercase){
-    userChoice += letterSetLower;
+    userChoice += letterSetLower.join('');
   }
   if (passwordUserChoice.numbers){
-    userChoice += numberSet;
+    userChoice += numberSet.join('');
   }
   if (passwordUserChoice.special){
-    userChoice += specialCharacters;
+    userChoice += specialCharacters.join('');
   }
   // for to generate random number
   for (var i=0; i < passwordUserChoice.passLength; i++){
     let random = Math.floor(Math.random() * userChoice.length);
     password += userChoice.charAt(random);
-
-    console.log(random);
   }
 
   //returns password out of function
@@ -84,22 +83,28 @@ function writePassword() {
 
 // Erases password that was generated 
 function erasePassword(){
-  document.getElementById('password').innerHTML= "";
+  document.getElementById('password').innerHTML = '';
 }
 
-// Copies password onto clipboard
-function copyPassword(){
 
-}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // Event added when erase button is clicked
-generateBtn.addEventListener('click', erasePassword);
+eraseBTN.addEventListener('click', erasePassword);
+
 
 // Event added to copy generated password
-generateBtn.addEventListener('click', copyPassword);
+copyBTN.addEventListener('click', () => {
+  navigator.clipboard
+    .writeText(password.textContent)
+    .then(() => {
+      console.log('Your password is copied');
+    }) .catch((err) => {
+      console.log('Failed to copy:', err);
+    })
+});
 
 // WHEN I click the button to generate a password
 // THEN I am presented with a series of prompts for password criteria
