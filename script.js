@@ -1,8 +1,9 @@
 // Assignment code here
 // Variables available in global scope
-const numberSet = [1,2,3,4,5,6,7,8,9,0];
-const letterSet = ["a", "b", 'c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-const specialCharacters = [',', '.', '/', ';', "'", "\\", '=', '-', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '`', '~', "'", '{', '}'];
+const numberSet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const letterSetUpper = ["a", "b", 'c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+const letterSetLower = ['A', 'B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+const specialCharacters = [',', '.', '/', ';', "'", '=', '-', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '`', '~', "'", '{', '}'];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -27,8 +28,8 @@ function optionPassword() {
   let options ={
     passLength: passLength,
     numbers: numbers,
-    lowercase: letterSet.toLowerCase(),
-    uppercase: letterSet.ToUpperCase(),
+    lowercase: lowercase,
+    uppercase: uppercase,
     special: special
   };
   //completes information gather and sends out
@@ -47,10 +48,10 @@ function generatePassword(){
 
   // if statement that evaluates choices and will implement based on input
   if (passwordUserChoice.uppercase){
-    userChoice += letterSet;
+    userChoice += letterSetUpper;
   }
   if (passwordUserChoice.lowercase){
-    userChoice += letterSet;
+    userChoice += letterSetLower;
   }
   if (passwordUserChoice.numbers){
     userChoice += numberSet;
@@ -59,9 +60,11 @@ function generatePassword(){
     userChoice += specialCharacters;
   }
   // for to generate random number
-  for (let i=0; i<passwordUserChoice.passLength; i++){
+  for (var i=0; i < passwordUserChoice.passLength; i++){
     let random = Math.floor(Math.random() * userChoice.length);
     password += userChoice.charAt(random);
+
+    console.log(random);
   }
 
   //returns password out of function
