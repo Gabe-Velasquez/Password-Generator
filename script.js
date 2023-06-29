@@ -10,9 +10,9 @@ const specialCharacters = [',', '.', '/', ';', "'", '=', '-', '!', '@', '#', '$'
 var generateBtn = document.querySelector("#generate");
 
 // Adding more references for generated elements
-var eraseBTN = document.querySelector('#erase');
-var copyBTN = document.querySelector('#copy');
-var passwordCopy = document.querySelector('#password');
+var eraseBtn = document.querySelector('#erase');
+var copyBtn = document.querySelector('#copy');
+var passwordField = document.querySelector('#password');
 
 function optionPassword() {
   //prompt asking how many characters the user would like to use
@@ -82,26 +82,21 @@ function writePassword() {
 
 }
 
-// Erases password that was generated 
-function erasePassword(){
-  document.getElementById('password').innerHTML = '';
-}
-
-
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // Event added when erase button is clicked
-eraseBTN.addEventListener('click', erasePassword);
+eraseBtn.addEventListener('click', () =>{
+  passwordField.value = '';
+});
 
 
 // Event added to copy generated password
-copyBTN.addEventListener('click', () => {
+copyBtn.addEventListener('click', () => {
   navigator.clipboard
-    .writeText(passwordCopy.value)
+    .writeText(passwordField.value)
     .then(() => {
-      console.log('Your password is copied');
+      alert('Your new password is copied!');
     }) .catch((err) => {
       console.log('Failed to copy:', err);
     })
