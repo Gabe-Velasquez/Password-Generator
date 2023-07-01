@@ -14,6 +14,7 @@ Do you hate when you're  at work and it's that wonderful time to change your pas
 ## Credits
 
 Xander (https://github.com/Xandromus) for providing starter code for this module.
+Read w3schools and mdn documentation going over .join method to help concatenating the random characters being generated. 
 
 ## License
 
