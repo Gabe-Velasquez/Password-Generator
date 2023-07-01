@@ -93,11 +93,12 @@ eraseBtn.addEventListener('click', () =>{
 
 // Event added to copy generated password
 copyBtn.addEventListener('click', () => {
-  navigator.clipboard
+  if (passwordField.textContent=''){
+    alert('Please generate a password');
+  } else{
+    navigator.clipboard
     .writeText(passwordField.value)
     .then(() => {
       alert('Your new password is copied!');
-    }) .catch((err) => {
-      console.log('Failed to copy:', err);
     })
-});
+  }});

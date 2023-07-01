@@ -31,11 +31,11 @@ header {
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 7%, 48%);
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  color: hsl(206, 54%, 62%);
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
